@@ -1,0 +1,104 @@
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>POC Phantom | Skywind</title>
+    </head>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: content-box;
+            border: none;
+        }
+
+        .header {
+            height: 45px;
+            width: 100%;
+            background-color: #666;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content {
+            height: calc(100% - 45px);
+        }
+
+        .content iframe {
+            height: 100%;
+            width: 100%;
+        }
+
+        #linkForGame {
+            height: 20px;
+            width: 20%;
+            min-width: 180px;
+            margin-bottom: 3px;
+        }
+
+        #play {
+            height: 20px;
+            margin-left: 3px;
+            padding: 0 20px;
+        }
+        
+        .btn{
+            height: 20px;
+            margin-left: 3px;
+            padding: 0 20px;
+        }
+        
+
+    </style>
+    <body>
+        <div class="header">
+            <div class="header__content">
+                <!-- <input id="linkForGame" /> -->
+                <!-- <button id="play" class="btn" onclick="playGame()">Play</button> -->
+                
+                <form>
+                  <select id='game_list' name="game_slist">
+                    <option value='--'>--</option>
+                    <option value='amazonlady'>amazonlady</option>
+                    <option value='firereel'>firereel</option>
+                    <option value='rambo'>rambo</option>
+                    <option value='3cardbrag'>3cardbrag</option>
+                    <option value='fufish'>fufish</option>
+                    <option value='coindozer'>coindozer</option>
+                  </select>
+                </form>
+                
+            </div>
+        </div>
+        <div class="content">
+            <iframe id="iframeWithGame"></iframe>
+        </div>
+
+    </body>
+    <script>
+        function playGame (link) {            
+            var iframeSrc = document.querySelector('#iframeWithGame');        
+            var value = (link) ? link : document.querySelector('#linkForGame').value;
+            iframeSrc.src = value;
+        }
+        
+        document.getElementById("game_list").addEventListener("change", function() {
+            if(this.value === 'amazonlady') {
+                playGame('http://gc.gaming.skywindgroup.com/amazonlady/latest/index.html');
+            }else if(this.value === 'firereel') {
+                playGame('http://gc.gaming.skywindgroup.com/firereel/latest/index.html');
+            }else if(this.value === 'rambo') {
+                playGame('http://gc.gaming.skywindgroup.com/rambo/241/index.html');
+            }else if(this.value === '3cardbrag') {
+                playGame('http://gc.gaming.skywindgroup.com/3cardbrag/latest/index.html');
+            }else if(this.value === 'fufish') {
+                playGame('http://gc.gaming.skywindgroup.com/fufish/latest/index.html');
+            }else if(this.value === 'coindozer') {
+                playGame('http://gc.gaming.skywindgroup.com/coindozer/latest/index.html');
+            }
+        });
+        
+    </script>
+</html>
